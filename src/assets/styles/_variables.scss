@@ -1,0 +1,36 @@
+$background-color: #1e293c;
+$background: #1A1F29; // Fundo principal da página e Header
+$card-surface: #414757; // Fundo dos cards e do backdrop na Detalhes
+
+// Ação e Interação (Botões; Ícones Ativos)
+$action-primary: #DC3545; // Vermelho/Rosa - Adicionar aos Favoritos
+$action-accent: #007bff; // Azul - Botão Ativo (Home/Favoritos)
+
+// Texto e Feedback
+$text-primary: #E0E0E0; // Branco/Claro (para a maioria dos textos)
+$text-secondary: #A0A0A0; // Cinza Claro (para datas/sinopses menos destacadas)
+
+// Elementos Específicos
+$tmdb-note: #FDD835; // Amarelo vibrante para a nota (adaptado para contraste)
+$heart-favorite: #DC3545; // Vermelho para o ícone de favoritado
+$input-bg: #272b38; // Fundo da barra de busca
+
+// Gêneros (Tags) - Podemos usar a cor de ação ou definir tags específicas
+$tag-genre: #1E90FF; // Um azul para as tags de Gênero
+
+// Tipografia
+$font-family-base: 'Inter', sans-serif;
+$font-size-base: 16px;
+
+// Espaçamentos
+$spacing-xs: 4px;
+$spacing-sm: 8px;
+$spacing-md: 16px;
+$spacing-lg: 24px;
+$spacing-xl: 32px;
+
+// Breakpoints
+$breakpoint-sm: 576px;
+$breakpoint-md: 768px;
+$breakpoint-lg: 992px;
+$breakpoint-xl: 1200px;
