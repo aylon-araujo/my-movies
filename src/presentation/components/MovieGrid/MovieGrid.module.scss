@@ -1,0 +1,14 @@
+@use '../../../assets/styles/variables' as vars;
+
+.movieGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); 
+  gap: vars.$spacing-md;
+
+  @media (min-width: vars.$breakpoint-md) {
+    grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
+  }
+  @media (min-width: vars.$breakpoint-lg) {
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  }
+}

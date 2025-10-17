@@ -1,40 +1,26 @@
-import React, { useState, useEffect } from "react";
-import { useLocation, useNavigate } from "react-router-dom"; 
-import { useDebounce } from '../../../hooks/useDebounce';
+import React from "react";
+import { useSearchSync } from '../../../hooks/useSearchSync';
+import { useLocation } from "react-router-dom";
 import InputSearch from "../InputSearch";
 import Button from "../Button";
-import styles from "./styles.module.scss";
-
-const DEBOUNCE_DELAY = 500;
+import styles from "./Header.module.scss";
+import { MainRoutes } from "../../../routes/Main/routes";
 
 const Header: React.FC = () => {
-  const [searchTerm, setSearchTerm] = useState<string>('');
-  const debouncedSearchTerm = useDebounce<string>(searchTerm, DEBOUNCE_DELAY);
-  
-  const navigate = useNavigate();
-  const location = useLocation();
+  const { searchTerm, setSearchTerm, handleNavigationClick } = useSearchSync();
+
+  const location = useLocation(); 
   const currentPath = location.pathname;
 
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setSearchTerm(event.target.value);
   };
 
-  useEffect(() => {
-    if (debouncedSearchTerm) {
-      // Lógica de pesquisa da API
-      console.log(`[DEBOUNCED] Nova Pesquisa acionada com: "${debouncedSearchTerm}"`);
-      // Ex: navigate(`/search/${debouncedSearchTerm}`);
-    } else {
-      // Limpar resultados
-      console.log("[DEBOUNCED] Campo de pesquisa limpo.");
-    }
-  }, [debouncedSearchTerm, navigate]);
-
   const getButtonVariant = (path: string): 'primary' | 'ghost' => {
-    if (path === '/' && currentPath === '/') {
+    if (path === MainRoutes.HOME && currentPath === MainRoutes.HOME) {
       return 'primary';
     }
-    if (path !== '/' && currentPath.startsWith(path)) {
+    if (path !== MainRoutes.HOME && currentPath.startsWith(path)) {
       return 'primary';
     }
     return 'ghost';
@@ -42,7 +28,7 @@ const Header: React.FC = () => {
 
   return (
     <header className={styles.headerPage}>
-      <div className={styles.logoHeader}>
+      <div onClick={() => handleNavigationClick(MainRoutes.HOME)} className={styles.logoHeader}>
         <span>MovieDB</span>
       </div>
 
@@ -51,20 +37,24 @@ const Header: React.FC = () => {
         onInputChange={handleInputChange} 
       />
 
-      <div className={styles.navigation}>
-        <Button 
-          onClick={() => navigate('/')}
-          variant={getButtonVariant('/')}
-        >
-          Home
-        </Button>
-        <Button 
-          onClick={() => navigate('/favorites')}
-          variant={getButtonVariant('/favorites')}
-        >
-          Favoritos
-        </Button>
-      </div>
+      <ul className={styles.navigation}>
+        <li>
+          <Button 
+            onClick={() => handleNavigationClick(MainRoutes.HOME)}
+            variant={getButtonVariant(MainRoutes.HOME)} 
+          >
+            Home
+          </Button>
+        </li>
+        <li>
+          <Button 
+            onClick={() => handleNavigationClick(MainRoutes.FAVORITES_MOVIES)}
+            variant={getButtonVariant(MainRoutes.FAVORITES_MOVIES)}
+          >
+            Favoritos
+          </Button>
+        </li>
+      </ul>
     </header>
   );
 };

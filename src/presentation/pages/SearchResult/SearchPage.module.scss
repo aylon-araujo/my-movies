@@ -1,0 +1,28 @@
+@use '../../../assets/styles/variables' as vars;
+
+.searchPageContainer {
+  padding: vars.$spacing-lg;
+  color: vars.$text-primary;
+}
+
+.searchTitle {
+  font-size: vars.$font-size-xxl;
+  margin-bottom: vars.$spacing-md;
+  
+  .queryHighlight {
+    color: vars.$action-accent;
+  }
+}
+
+.searchPageContent {
+  text-align: center;
+  margin-top: vars.$spacing-xl;
+  font-size: vars.$font-size-lg;
+  color: vars.$text-secondary;
+}
+
+.loadMoreContainer {
+    display: flex;
+    justify-content: center;
+    margin-top: vars.$spacing-xl;
+}

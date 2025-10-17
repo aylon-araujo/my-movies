@@ -34,9 +34,9 @@
   background-color: vars.$action-accent;
   color: vars.$text-primary;
 
-  &:hover:not(:disabled) {
-    background-color: darken(vars.$action-accent, 8%);
-  }
+  // &:hover:not(:disabled) {
+  //   background-color: color.adjust(vars.$action-accent, $lightness: -8%);
+  // }
 }
 
 .danger {
@@ -45,9 +45,9 @@
   
   border-radius: vars.$spacing-sm;
 
-  &:hover:not(:disabled) {
-    background-color: darken(vars.$action-primary, 8%);
-  }
+  // &:hover:not(:disabled) {
+  //   background-color: color.adjust(vars.$action-accent, $lightness: 8%);
+  // }
 }
 
 .ghost {

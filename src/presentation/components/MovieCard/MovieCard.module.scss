@@ -1,0 +1,86 @@
+@use '../../../assets/styles/variables' as vars;
+
+.movieCard {
+  background-color: vars.$card-surface;
+  border-radius: vars.$spacing-sm;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transition: transform 0.2s ease-in-out;
+  cursor: pointer;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+
+  &:hover {
+    transform: translateY(-5px);
+  }
+
+  .posterContainer {
+    position: relative;
+    width: 100%;
+  
+    padding-bottom: 150%; 
+    background-color: vars.$background-color;
+
+    .poster {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .favoriteButtonOverlay {
+      position: absolute;
+      top: vars.$spacing-sm;
+      right: vars.$spacing-sm;
+      z-index: 10;
+      
+      .defaultFavoriteButton {
+      
+        width: 32px;
+        height: 32px;
+        padding: 0;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+    }
+  }
+
+  .info {
+    padding: vars.$spacing-sm;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    flex-grow: 1;
+  }
+
+  .title {
+    font-size: vars.$font-size-md;
+    color: vars.$text-primary;
+    margin: 0 0 vars.$spacing-xs 0;
+    line-height: 1.3;
+    min-height: 2.6em;
+    
+    .highlight {
+      background-color: vars.$yellow-light;
+      color: vars.$black;
+      padding: 0 3px;
+      border-radius: 3px;
+    }
+  }
+
+  .rating {
+    font-size: vars.$font-size-sm;
+    background-color: vars.$yellow-dark;
+    color: vars.$black;
+    padding: 0.1rem 0.4rem;
+    border-radius: vars.$spacing-md;
+    font-weight: vars.$font-weight-semibold;
+    margin-top: vars.$spacing-xs;
+    align-self: flex-start;
+  }
+} 

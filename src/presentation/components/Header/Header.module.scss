@@ -14,13 +14,22 @@
   }
 
   .logoHeader {
+    cursor: pointer;
     font-size: vars.$font-size-lg;
-    color: vars.$yellow-color;
+    color: vars.$yellow-dark;
     font-weight: vars.$font-weight-bold;
 
     &::before {
       content: '🎬';
       margin-right: 0.5rem;
     }
+  }
+
+  .navigation {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: vars.$spacing-sm;
   }
 }
