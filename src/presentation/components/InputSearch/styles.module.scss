@@ -1,0 +1,30 @@
+@use '../../../assets/styles/variables' as vars;
+
+.inputSearchWrapper {
+  max-width: 30rem;
+  width: 100%;
+  background-color: vars.$input-bg;
+  padding: 0.5rem 1rem;
+  border-radius: 3rem;
+  display: flex;
+  align-items: center;
+  transition: box-shadow 0.2s ease-in-out;
+
+  .inputSearch {
+    background-color: transparent;
+    border: none;
+    outline: none;
+    width: 100%;
+    color: vars.$text-primary;
+    font-size: 1rem;
+
+    &::placeholder {
+      color: vars.$text-secondary;
+      opacity: 0.7;
+    }
+  }
+  
+  &:focus-within {
+    box-shadow: 0 0 0 2px rgba(vars.$action-accent, 0.5); 
+  }
+}

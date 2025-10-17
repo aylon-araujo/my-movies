@@ -1,0 +1,26 @@
+@use '../../../assets/styles/variables' as vars;
+
+.headerPage {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid gray;
+  padding: 1rem 2rem;
+
+  @media (max-width: vars.$breakpoint-md) {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .logoHeader {
+    font-size: vars.$font-size-lg;
+    color: vars.$yellow-color;
+    font-weight: vars.$font-weight-bold;
+
+    &::before {
+      content: '🎬';
+      margin-right: 0.5rem;
+    }
+  }
+}

@@ -4,16 +4,16 @@ $card-surface: #414757; // Fundo dos cards e do backdrop na Detalhes
 
 // Ação e Interação (Botões; Ícones Ativos)
 $action-primary: #DC3545; // Vermelho/Rosa - Adicionar aos Favoritos
-$action-accent: #007bff; // Azul - Botão Ativo (Home/Favoritos)
+$action-accent: #3b83f6; // Azul - Botão Ativo (Home/Favoritos)
 
 // Texto e Feedback
 $text-primary: #E0E0E0; // Branco/Claro (para a maioria dos textos)
 $text-secondary: #A0A0A0; // Cinza Claro (para datas/sinopses menos destacadas)
 
 // Elementos Específicos
-$tmdb-note: #FDD835; // Amarelo vibrante para a nota (adaptado para contraste)
+$yellow-color: #f59e0c; // Amarelo vibrante para a nota (adaptado para contraste)
 $heart-favorite: #DC3545; // Vermelho para o ícone de favoritado
-$input-bg: #272b38; // Fundo da barra de busca
+$input-bg: #334156; // Fundo da barra de busca
 
 // Gêneros (Tags) - Podemos usar a cor de ação ou definir tags específicas
 $tag-genre: #1E90FF; // Um azul para as tags de Gênero
@@ -21,6 +21,20 @@ $tag-genre: #1E90FF; // Um azul para as tags de Gênero
 // Tipografia
 $font-family-base: 'Inter', sans-serif;
 $font-size-base: 16px;
+
+// Tamanhos de fonte
+$font-size-xs: 12px;   // legendas, datas, infos secundárias
+$font-size-sm: 14px;   // textos de apoio, labels, descrições
+$font-size-md: 16px;   // texto padrão (parágrafos, inputs)
+$font-size-lg: 20px;   // títulos de seção, botões maiores
+$font-size-xl: 24px;   // subtítulos ou destaques
+$font-size-xxl: 32px;  // títulos principais / hero
+
+// Pesos opcionais (se quiser manter consistência)
+$font-weight-regular: 400;
+$font-weight-medium: 500;
+$font-weight-semibold: 600;
+$font-weight-bold: 700;
 
 // Espaçamentos
 $spacing-xs: 4px;
