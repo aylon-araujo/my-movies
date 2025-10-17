@@ -1,14 +1,17 @@
 // src/App.tsx (Corrigido)
 import { BrowserRouter } from 'react-router-dom';
 import { AppRouter } from './routes';
+import { AppProvider } from './context/AppProvider';
 import Header from './presentation/components/Header';
 import './App.css';
 
 function App() {
   return (
     <BrowserRouter> 
-      <Header /> 
-      <AppRouter />
+      <AppProvider>
+        <Header /> 
+        <AppRouter />
+      </AppProvider>
     </BrowserRouter>
   )
 }
