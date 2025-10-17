@@ -1,5 +1,5 @@
 $background-color: #1e293c;
-$background: #1A1F29; // Fundo principal da página e Header
+$black: #1A1F29; // Fundo principal da página e Header
 $card-surface: #414757; // Fundo dos cards e do backdrop na Detalhes
 
 // Ação e Interação (Botões; Ícones Ativos)
@@ -11,7 +11,8 @@ $text-primary: #E0E0E0; // Branco/Claro (para a maioria dos textos)
 $text-secondary: #A0A0A0; // Cinza Claro (para datas/sinopses menos destacadas)
 
 // Elementos Específicos
-$yellow-color: #f59e0c; // Amarelo vibrante para a nota (adaptado para contraste)
+$yellow-dark: #f59e0c; // Amarelo vibrante para a nota (adaptado para contraste)
+$yellow-light: #fcbf23; // Amarelo vibrante para a nota (adaptado para contraste)
 $heart-favorite: #DC3545; // Vermelho para o ícone de favoritado
 $input-bg: #334156; // Fundo da barra de busca
 
