@@ -1,7 +1,7 @@
 
 
 import React, { useState, useEffect, useCallback } from "react";
-import { useSearchParams, useNavigate } from "react-router-dom";
+import { useSearchParams } from "react-router-dom";
 import { movieApi } from '../../../services/http/MovieApi';
 import MovieGrid from "../../components/MovieGrid";
 import MovieCard from "../../components/MovieCard";
@@ -17,7 +17,6 @@ const SearchPage: React.FC = () => {
   const [totalPages, setTotalPages] = useState(1);
 
   const [searchParams] = useSearchParams();
-  const navigate = useNavigate();
   const query = searchParams.get("q");
 
   const fetchResults = useCallback(async (term: string, pageNum: number) => {
@@ -69,10 +68,6 @@ const SearchPage: React.FC = () => {
     }
   };
 
-  const handleMovieClick = (movieId: number) => {
-    navigate(`/movie/${movieId}`);
-  };
-
   if (!query) {
     return (
       <div className={styles.searchPageContent}>
@@ -98,7 +93,6 @@ const SearchPage: React.FC = () => {
               key={movie.id}
               movie={movie}
               highlightTerm={decodeURIComponent(query)}
-              onClick={handleMovieClick}
             />
           ))}
         </MovieGrid>
