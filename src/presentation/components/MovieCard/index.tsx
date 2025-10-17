@@ -1,6 +1,7 @@
 import React from 'react';
 import type { Movie } from '../../../models/Movie'; 
 import { useFavorites } from '../../../hooks/useFavorites';
+import { useSearchSync } from '../../../hooks/useSearchSync'
 import { FaHeart } from 'react-icons/fa'; 
 import styles from './MovieCard.module.scss';
 import Button from '../Button'; 
@@ -17,6 +18,7 @@ interface MovieCardProps {
 const MovieCard: React.FC<MovieCardProps> = ({ movie, highlightTerm }) => {
   const navigate = useNavigate();
   const { isFavorite, toggleFavorite } = useFavorites();
+  const { handleNavigationClick } = useSearchSync();
   const favorite = isFavorite(movie.id); 
 
   const imageUrl = movie.poster_path 
@@ -24,7 +26,7 @@ const MovieCard: React.FC<MovieCardProps> = ({ movie, highlightTerm }) => {
     : 'https://via.placeholder.com/200x300?text=Sem+Poster';
 
   const handleCardClick = () => {
-    navigate(`${MainRoutes.MOVIE_DETAIL.replace(':id', String(movie.id))}`);
+    handleNavigationClick(`${MainRoutes.MOVIE_DETAIL.replace(':id', String(movie.id))}`);
   };
   
   const handleFavoriteClick = (e: React.MouseEvent) => {

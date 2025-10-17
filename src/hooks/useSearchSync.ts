@@ -23,20 +23,14 @@ export const useSearchSync = (): UseSearchSyncReturn => {
   const currentUrlQuery = searchParams.get('q') || '';
 
   const handleNavigationClick = useCallback((path: string) => {
-    setSearchTerm('');
     navigate(path);
   }, [navigate]);
 
   useEffect(() => {
-    if (currentPath === MainRoutes.SEARCH_MOVIES) {
-      if (currentUrlQuery && currentUrlQuery !== searchTerm) {
-        setSearchTerm(decodeURIComponent(currentUrlQuery)); 
-      } else if (!currentUrlQuery && searchTerm) {
-        setSearchTerm('');
-      }
-    }
-    else if (searchTerm) {
-        setSearchTerm('');
+    if (currentUrlQuery && searchTerm.length > 0) {
+      setSearchTerm(decodeURIComponent(currentUrlQuery)); 
+    } else if (searchTerm) {
+      setSearchTerm('');
     }
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [currentPath, currentUrlQuery]); 
@@ -52,9 +46,8 @@ export const useSearchSync = (): UseSearchSyncReturn => {
         navigate(`${MainRoutes.SEARCH_MOVIES}?q=${encodeURIComponent(query)}`);
       }
     } 
-
-  }, [debouncedSearchTerm, navigate, currentPath, currentUrlQuery, searchTerm]);
-
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [debouncedSearchTerm]);
 
   return {
     searchTerm,

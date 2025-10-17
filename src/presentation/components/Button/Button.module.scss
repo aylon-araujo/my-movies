@@ -50,6 +50,10 @@
   // }
 }
 
+.secondary {
+  color: vars.$black;
+}
+
 .ghost {
   background-color: transparent;
   color: vars.$text-secondary;

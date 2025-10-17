@@ -1,4 +1,4 @@
-import type { MovieSearchResponse } from "../../models/Movie";
+import type { Movie, MovieSearchResponse } from "../../models/Movie";
 import { ConnectionProvider } from "./ConnectionProvider";
 import type { AxiosInstance } from 'axios';
 
@@ -50,6 +50,16 @@ export class MovieApi extends ConnectionProvider {
       return response.data; 
     } catch (error) {
       console.error('Erro ao pesquisar filmes no TMDB:', error);
+      throw error; 
+    }
+  }
+
+  public async getMovieDetail(movieId: number): Promise<Movie> {
+    try {
+      const response = await this.api.get<Movie>(`/movie/${movieId}`);
+      return response.data;
+    } catch (error) {
+      console.error(`Failed to load movie details ${movieId}:`, error);
       throw error; 
     }
   }
