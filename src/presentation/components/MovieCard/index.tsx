@@ -4,8 +4,7 @@ import { useFavorites } from '../../../hooks/useFavorites';
 import { useSearchSync } from '../../../hooks/useSearchSync'
 import { FaHeart } from 'react-icons/fa'; 
 import styles from './MovieCard.module.scss';
-import Button from '../Button'; 
-import { useNavigate } from 'react-router-dom';
+import Button from '../Button';
 import { MainRoutes } from '../../../routes/Main/routes';
 
 const TMDB_IMAGE_BASE_URL = 'https://image.tmdb.org/t/p/w200'; 
@@ -16,7 +15,6 @@ interface MovieCardProps {
 }
 
 const MovieCard: React.FC<MovieCardProps> = ({ movie, highlightTerm }) => {
-  const navigate = useNavigate();
   const { isFavorite, toggleFavorite } = useFavorites();
   const { handleNavigationClick } = useSearchSync();
   const favorite = isFavorite(movie.id); 
