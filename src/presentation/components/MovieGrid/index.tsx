@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import type { Movie } from '../../../models/Movie'; 
 import MovieCard from '../MovieCard';
 import styles from './MovieGrid.module.scss';
@@ -26,6 +26,34 @@ const MovieGrid: React.FC<MovieGridProps> = ({
   emptyMessage,
   highlightTerm,
 }) => {
+  const sentinelRef = useRef<HTMLDivElement | null>(null);
+
+  useEffect(() => {
+    if (!sentinelRef.current) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const target = entries[0];
+        if (target.isIntersecting && !isLoading && currentPage < totalPages) {
+          onPageChange(currentPage + 1);
+        }
+      },
+      {
+        root: null,
+        rootMargin: '0px',
+        threshold: 0.5,
+      }
+    );
+
+    observer.observe(sentinelRef.current);
+
+    return () => {
+      if (sentinelRef.current) {
+        observer.unobserve(sentinelRef.current);
+      }
+    };
+  }, [isLoading, currentPage, totalPages, onPageChange]);
+
   if (isLoading && movies.length === 0) {
     return <div>Carregando Filmes...</div>; 
   }
@@ -50,6 +78,7 @@ const MovieGrid: React.FC<MovieGridProps> = ({
 
   return (
     <div className={styles.movieGridContainer}>
+      {title && <h2 className={styles.title}>{title}</h2>}
       <div className={styles.movieGrid}>
         {movies.map((movie) => (
           <MovieCard
@@ -60,23 +89,11 @@ const MovieGrid: React.FC<MovieGridProps> = ({
         ))}
       </div>
 
-      <div className={styles.paginationContainer}>
-        <button
-          onClick={() => onPageChange(currentPage - 1)}
-          disabled={currentPage <= 1 || isLoading}
-        >
-          Anterior
-        </button>
-        <span className={styles.pageInfo}>
-          Página {currentPage} de {totalPages}
-        </span>
-        <button
-          onClick={() => onPageChange(currentPage + 1)}
-          disabled={currentPage >= totalPages || isLoading}
-        >
-          Próxima
-        </button>
-      </div>
+      {currentPage < totalPages && (
+        <div ref={sentinelRef} className={styles.sentinel}>
+          {isLoading ? 'Carregando mais filmes...' : ''}
+        </div>
+      )}
     </div>
   );
 };
