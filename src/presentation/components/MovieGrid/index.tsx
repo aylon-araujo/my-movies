@@ -2,6 +2,7 @@ import React, { useEffect, useRef } from 'react';
 import type { Movie } from '../../../models/Movie'; 
 import MovieCard from '../MovieCard';
 import styles from './MovieGrid.module.scss';
+import If from '../If';
 
 interface MovieGridProps {
   movies: Movie[];
@@ -78,7 +79,10 @@ const MovieGrid: React.FC<MovieGridProps> = ({
 
   return (
     <div className={styles.movieGridContainer}>
-      {title && <h2 className={styles.title}>{title}</h2>}
+      <If condition={!!title}>
+        <h2 className={styles.title}>{title}</h2>
+      </If>
+
       <div className={styles.movieGrid}>
         {movies.map((movie) => (
           <MovieCard
@@ -89,11 +93,11 @@ const MovieGrid: React.FC<MovieGridProps> = ({
         ))}
       </div>
 
-      {currentPage < totalPages && (
+      <If condition={currentPage < totalPages}>
         <div ref={sentinelRef} className={styles.sentinel}>
           {isLoading ? 'Carregando mais filmes...' : ''}
         </div>
-      )}
+      </If>
     </div>
   );
 };

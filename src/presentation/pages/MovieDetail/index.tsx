@@ -7,6 +7,7 @@ import type { Movie } from "../../../models/Movie";
 import Button from "../../components/Button";
 import { FaHeart } from "react-icons/fa";
 import styles from "./MovieDetail.module.scss";
+import If from "../../components/If";
 
 const TMDB_IMAGE_BASE_URL_LARGE = "https://image.tmdb.org/t/p/w1280";
 
@@ -89,15 +90,16 @@ const MovieDetail: React.FC = () => {
     <div className={styles.detailPage}>
       <div className={styles.contentContainer}>
         <div className={styles.posterWrapper}>
-          {backdropUrl ? (
+          <If condition={!!backdropUrl && backdropUrl.length > 0}>
             <img
               src={backdropUrl}
               alt={`Poster de ${movie.title}`}
               className={styles.poster}
             />
-          ) : (
+          </If>
+          <If condition={!backdropUrl}>
             <div className={styles.noPoster}>Sem Poster</div>
-          )}
+          </If>
         </div>
 
         <div className={styles.info}>

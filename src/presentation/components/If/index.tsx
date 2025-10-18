@@ -1,7 +1,7 @@
 import React from 'react';
 
 interface IfProps {
-  condition: boolean;
+  condition: boolean | null | undefined;
   children: React.ReactNode;
 }
 
