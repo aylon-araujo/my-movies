@@ -54,7 +54,8 @@ const MovieCard: React.FC<MovieCardProps> = ({ movie, highlightTerm }) => {
         <img src={imageUrl} alt={`Poster do filme ${movie.title}`} className={styles.poster} />
         
         <div className={styles.favoriteButtonOverlay}>
-          <Button 
+          <Button
+            aria-label={favorite ? 'removeFavorite' : 'addFavorite'}
             variant={favorite ? "danger" : "ghost"} 
             size="small" 
             className={styles.defaultFavoriteButton}
