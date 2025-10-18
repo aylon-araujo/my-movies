@@ -1,4 +1,4 @@
-@use '../../../assets/styles/variables' as vars;
+@use '@app/styles/variables' as vars;
 
 .movieCard {
   background-color: vars.$card-surface;

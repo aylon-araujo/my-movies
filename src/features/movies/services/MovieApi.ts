@@ -1,5 +1,5 @@
 import type { Movie, MovieSearchResponse } from "@domain/Movie";
-import { ConnectionProvider } from "@shared/services/dasd/ConnectionProvider";
+import { ConnectionProvider } from "@shared/services/http/ConnectionProvider";
 import type { AxiosInstance } from 'axios';
 
 const MOVIE_API_URL = import.meta.env.VITE_MOVIE_API_ENDPOINT;
