@@ -18,45 +18,60 @@ export const useMovieList = (): UseMovieListReturn => {
   const [searchParams] = useSearchParams();
   const currentQuery = searchParams.get('q') || '';
   const isSearch = currentQuery.trim().length > 0;
-  
+
   const [movies, setMovies] = useState<Movie[]>([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
-  const fetchList = useCallback(async (query: string, pageToLoad: number) => {
-    setIsLoading(true);
-    setError(null);
-    setMovies([]);
+  const fetchList = useCallback(
+    async (query: string, pageToLoad: number) => {
+      setIsLoading(true);
+      setError(null);
 
-    try {
-      const data = await movieApi.fetchMoviesList(query, pageToLoad);
+      if (pageToLoad === 1) {
+        setMovies([]);
+      }
 
-      setMovies(data.results);
-      setTotalPages(data.total_pages > 500 ? 500 : data.total_pages);
-      setCurrentPage(pageToLoad);
+      try {
+        const data = await movieApi.fetchMoviesList(query, pageToLoad);
+        setTotalPages(data.total_pages > 500 ? 500 : data.total_pages);
+        setCurrentPage(pageToLoad);
 
-    } catch (err) {
-      console.error('Erro ao buscar lista de filmes:', err);
-      setError(`Erro ao carregar filmes. ${isSearch ? `Busca: "${query}"` : 'Populares'}.`);
-    } finally {
-      setIsLoading(false);
-    }
-  }, [isSearch]);
+        setMovies((prevMovies) => {
+          if (pageToLoad === 1) {
+            return data.results;
+          } else {
+            const newMovies = data.results.filter(
+              (newMovie) => !prevMovies.some((m) => m.id === newMovie.id)
+            );
+            return [...prevMovies, ...newMovies];
+          }
+        });
+      } catch (err) {
+        console.error('Erro ao buscar lista de filmes:', err);
+        setError(`Erro ao carregar filmes. ${isSearch ? `Busca: "${query}"` : 'Populares'}.`);
+      } finally {
+        setIsLoading(false);
+      }
+    },
+    [isSearch]
+  );
 
   useEffect(() => {
-    const pageToLoad = isSearch ? currentPage : 1; 
-    const query = isSearch ? currentQuery : '';
-    
-    fetchList(query, pageToLoad);
-  }, [currentQuery, currentPage, fetchList, isSearch]);
+    fetchList(currentQuery, 1);
+    setCurrentPage(1);
+  }, [currentQuery, fetchList]);
 
-  const goToPage = useCallback((pageNumber: number) => {
-    if (pageNumber >= 1 && pageNumber <= totalPages) {
-        setCurrentPage(pageNumber);
-    }
-  }, [totalPages]);
+  const goToPage = useCallback(
+    (pageNumber: number) => {
+      if (!isLoading && pageNumber >= 1 && pageNumber <= totalPages) {
+        fetchList(currentQuery, pageNumber);
+      }
+    },
+    [totalPages, isLoading, currentQuery, fetchList]
+  );
 
   return {
     movies,
