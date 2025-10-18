@@ -14,7 +14,7 @@ const config: Config = {
     // Assets (images, etc)
     '\\.(css|scss|png|jpg|jpeg|gif|svg)$': '<rootDir>/src/__mocks__/fileMock.ts',
   },
-  setupFilesAfterEnv: ['<rootDir>/src/setupTests.ts'],
+  setupFilesAfterEnv: ['<rootDir>/src/app/tests/setupTests.ts'],
   testPathIgnorePatterns: ['/node_modules/', '/dist/'],
   collectCoverage: true,
   coverageDirectory: '<rootDir>/coverage',
