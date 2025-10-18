@@ -7,7 +7,7 @@ const MOVIE_API_URL = import.meta.env.VITE_MOVIE_API_ENDPOINT;
 const MOVIE_API_KEY = import.meta.env.VITE_MOVIE_API_KEY; 
 
 export class MovieApi extends ConnectionProvider {
-  static searchMoviesByTitle(term: string, pageNum: number) {
+  static fetchMoviesList(term: string, pageNum: number) {
     const data = { term, pageNum }
     throw new Error(`Method not implemented. ${data}`);
   }
@@ -31,26 +31,33 @@ export class MovieApi extends ConnectionProvider {
     });
   }
 
-  public async searchMoviesByTitle(
-    query: string, 
+  public async fetchMoviesList(
+    query?: string,
     pageNum: number = 1
   ): Promise<MovieSearchResponse> {
-    if (!query) {
+    const isSearch = query && query.trim().length > 0;
+    const endpoint = isSearch ? '/search/movie' : '/movie/popular';
+    const params: { [key: string]: any } = { 
+      page: pageNum 
+    };
+
+    if (isSearch) {
+      params.query = query;
+    }
+
+    if (!isSearch && endpoint === '/search/movie') {
         return { page: 0, results: [], total_pages: 0, total_results: 0 }; 
     }
 
     try {
-      const response = await this.api.get<MovieSearchResponse>('/search/movie', {
-        params: {
-          query: query,
-          page: pageNum,
-        },
+      const response = await this.api.get<MovieSearchResponse>(endpoint, {
+        params: params,
       });
 
-      return response.data; 
+      return response.data;
     } catch (error) {
       console.error('Erro ao pesquisar filmes no TMDB:', error);
-      throw error; 
+      throw error;
     }
   }
 

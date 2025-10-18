@@ -1,0 +1,6 @@
+@use '../../../assets/styles/variables' as vars;
+
+.homePageContainer {
+  padding: vars.$spacing-lg;
+  color: vars.$text-primary;
+}

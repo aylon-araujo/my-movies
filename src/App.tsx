@@ -1,4 +1,3 @@
-// src/App.tsx (Corrigido)
 import { BrowserRouter } from 'react-router-dom';
 import { AppRouter } from './routes';
 import { AppProvider } from './context/AppProvider';
