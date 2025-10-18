@@ -2,7 +2,7 @@ import React from 'react';
 import type { Movie } from '../../../models/Movie'; 
 import { useFavorites } from '../../../hooks/useFavorites';
 import { useSearchSync } from '../../../hooks/useSearchSync'
-import { FaHeart } from 'react-icons/fa'; 
+import { FaTrashAlt} from 'react-icons/fa'; 
 import styles from './MovieCard.module.scss';
 import Button from '../Button';
 import { MainRoutes } from '../../../routes/Main/routes';
@@ -15,9 +15,8 @@ interface MovieCardProps {
 }
 
 const MovieCard: React.FC<MovieCardProps> = ({ movie, highlightTerm }) => {
-  const { isFavorite, toggleFavorite } = useFavorites();
+  const { removeFavorite } = useFavorites();
   const { handleNavigationClick } = useSearchSync();
-  const favorite = isFavorite(movie.id); 
 
   const imageUrl = movie.poster_path 
     ? `${TMDB_IMAGE_BASE_URL}${movie.poster_path}` 
@@ -29,7 +28,7 @@ const MovieCard: React.FC<MovieCardProps> = ({ movie, highlightTerm }) => {
   
   const handleFavoriteClick = (e: React.MouseEvent) => {
     e.stopPropagation(); 
-    toggleFavorite(movie);
+    removeFavorite(movie?.id);
   };
 
   const getHighlightedTitle = (title: string, term?: string) => {
@@ -55,12 +54,12 @@ const MovieCard: React.FC<MovieCardProps> = ({ movie, highlightTerm }) => {
         
         <div className={styles.favoriteButtonOverlay}>
           <Button 
-            variant={favorite ? "danger" : "ghost"} 
+            variant="ghost"
             size="small" 
             className={styles.defaultFavoriteButton}
             onClick={handleFavoriteClick} 
           >
-            <FaHeart color={favorite ? 'white' : 'currentColor'} /> 
+            <FaTrashAlt color="white" /> 
           </Button>
         </div>
         
