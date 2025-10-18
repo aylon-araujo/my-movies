@@ -1,75 +1,137 @@
-# React + TypeScript + Vite
+# MY-MOVIES: Movie Catalog
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+> 🇧🇷 [Leia em Português](./README.pt-BR.md)
 
-Currently, two official plugins are available:
+[](https://nodejs.org/)
+[](https://reactjs.org/)
+[](https://www.typescriptlang.org/)
+[](https://vitejs.dev/)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## About the Project
 
-## React Compiler
+This project is an interactive movie catalog (inspired by platforms like TMDb), built with a modern and scalable frontend architecture.
 
-The React Compiler is enabled on this template. See [this documentation](https://react.dev/learn/react-compiler) for more information.
+The main goal is to demonstrate the capabilities of React combined with a feature-based architecture, ensuring easy maintenance, testability, and low coupling between modules.
 
-Note: This will impact Vite dev & build performances.
+### Features
 
-## Expanding the ESLint configuration
+* **Real-Time Search:** Movie search with URL synchronization.
+* **Dynamic Listing:** Display of movies in an efficient grid layout.
+* **Movie Details:** Navigation to a dedicated movie detail page.
+* **Persistent Favorites System:** Add and remove favorite movies, managed via Context API.
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## Architecture and Folder Structure
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+The project follows a **Feature-Based Architecture**, applying **Clean Architecture** principles to separate code by responsibility and business domain.
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+| Folder          | Responsibility     | Description                                                                                                    |
+| :-------------- | :----------------- | :------------------------------------------------------------------------------------------------------------- |
+| `src/app/`      | **Composition**    | Global configuration: `App.tsx`, `main.tsx`, routes, providers, and global styles.                             |
+| `src/domain/`   | **Pure Domain**    | Definition of core entities and data types (e.g., `Movie.ts`). It does not depend on frameworks or APIs.       |
+| `src/features/` | **Features**       | Isolated business domains (e.g., `movies`, `favorites`). Each feature has its own UI, hooks, and services.     |
+| `src/shared/`   | **Infrastructure** | Reusable components (e.g., `Button`, `If`), hooks (e.g., `useDebounce`), and generic services (`http client`). |
+| `src/tests/`    | **Tests**          | Test configuration files (e.g., `setupTests.ts`).                                                              |
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+## Technologies Used
+
+* **Frontend:** React (Hooks and Context API)
+* **Language:** TypeScript
+* **Tooling:** Vite
+* **Routing:** React Router DOM
+* **Styling:** CSS Modules (default)
+* **Unit Testing:** Jest / React Testing Library
+* **Code Quality:** ESLint
+
+## How to Run the Project
+
+Follow the steps below to get a local copy of the project up and running.
+
+### Prerequisites
+
+* Node.js (version 18+)
+* Yarn or npm
+
+### 1. Installation
+
+Clone the repository and navigate to the project folder:
+
+```bash
+git clone [YOUR_REPO_URL] my-movies
+cd my-movies
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+Install the dependencies:
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+yarn install
+# or
+npm install
 ```
+
+### 2. Environment Variables Configuration
+
+Create a `.env` file at the root of the project with the required API keys (example for a movie project):
+
+```
+# .env
+VITE_MOVIE_API_KEY="YOUR_API_KEY_HERE"
+VITE_MOVIE_API_ENDPOINT="https://api.themoviedb.org/3"
+```
+
+### 3. Run the Project
+
+Start the development server:
+
+```bash
+yarn dev
+# or
+npm run dev
+```
+
+The application will be available at `http://localhost:5173/` (or the port indicated by Vite).
+
+### 4. Production Build
+
+To generate the final build:
+
+```bash
+yarn build
+# or
+npm run build
+```
+
+The optimized static files will be created in the `dist/` folder.
+
+## Tests and Code Quality
+
+### Unit Tests
+
+To run the tests:
+
+```bash
+yarn test
+# or
+npm run test
+```
+
+### Automatic Lint Fix
+
+The project uses ESLint with custom import sorting rules to ensure architectural consistency.
+
+To automatically fix lint and formatting issues (including import order):
+
+```bash
+yarn lint:fix
+# or
+npm run lint:fix
+```
+
+-----
+
+## Author
+
+* **[Aylon Araújo / @aylon-araujo]** - [linkedin.com/in/aylon-araujo]
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details.
