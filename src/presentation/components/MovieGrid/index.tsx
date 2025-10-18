@@ -9,7 +9,7 @@ interface MovieGridProps {
   error: string | null;
   currentPage: number;
   totalPages: number;
-  onPageChange: (page: number) => void;
+  onPageChange?: (page: number) => void;
   title?: string;
   emptyMessage: string;
   highlightTerm?: string;
@@ -35,7 +35,7 @@ const MovieGrid: React.FC<MovieGridProps> = ({
       (entries) => {
         const target = entries[0];
         if (target.isIntersecting && !isLoading && currentPage < totalPages) {
-          onPageChange(currentPage + 1);
+          if (onPageChange) onPageChange(currentPage + 1);
         }
       },
       {
