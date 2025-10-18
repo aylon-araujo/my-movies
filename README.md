@@ -56,7 +56,7 @@ Follow the steps below to get a local copy of the project up and running.
 Clone the repository and navigate to the project folder:
 
 ```bash
-git clone [YOUR_REPO_URL] my-movies
+git clone https://github.com/aylon-araujo/my-movies.git
 cd my-movies
 ```
 

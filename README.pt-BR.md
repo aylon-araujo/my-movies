@@ -54,7 +54,7 @@ Siga os passos abaixo para ter uma cópia local do projeto rodando em sua máqui
 Clone o repositório e navegue até a pasta do projeto:
 
 ```bash
-git clone [URL_DO_SEU_REPO] my-movies
+git clone https://github.com/aylon-araujo/my-movies.git
 cd my-movies
 ```
 
