@@ -1,5 +1,6 @@
 import React from 'react';
 import MovieGrid from '@shared/components/MovieGrid';
+import FloatingButton from "@shared/components/FloatingButton";
 import { useMovieList } from '../../hooks/useMovieList';
 import styles from './Home.module.scss'
 
@@ -24,6 +25,7 @@ const HomePage: React.FC = () => {
         onPageChange={goToPage}
         emptyMessage="Nenhum filme popular encontrado. Verifique sua conexão ou a API."
       />
+      <FloatingButton />
     </div>
   );
 };

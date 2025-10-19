@@ -1,5 +1,6 @@
 import React from 'react';
 import { useMovieList } from '../../hooks/useMovieList';
+import FloatingButton from "@shared/components/FloatingButton";
 import MovieGrid from '@shared/components/MovieGrid';
 import styles from './SearchPage.module.scss'
 
@@ -42,6 +43,8 @@ const SearchResult: React.FC = () => {
         emptyMessage={`Nenhum resultado encontrado para: "${currentQuery}".`}
         highlightTerm={currentQuery}
       />
+
+      <FloatingButton />
     </div>
   );
 };
