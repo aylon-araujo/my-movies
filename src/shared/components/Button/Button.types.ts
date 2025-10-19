@@ -1,4 +1,3 @@
-// (Mantém o que já existia)
 export type ButtonVariant = 'primary' | 'secondary' | 'danger' | 'ghost'; 
 export type ButtonSize = 'small' | 'medium' | 'large';
 

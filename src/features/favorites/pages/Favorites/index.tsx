@@ -5,13 +5,10 @@ import { Link } from "react-router-dom";
 import { MainRoutes } from "@app/routes/Main/routes";
 import type { Movie } from "@domain/Movie";
 import { Button, Divider, If, MovieGrid, SortSelect } from "@shared/components";
+import type { SortCriteria, SortDirection,SortOption } from "@shared/components/SortSelect/SortSelect.types";
 
 import { useFavorites } from "../../hooks/useFavorites";
-import styles from "./FavoritesPage.module.scss";
-
-type SortOption = "title_asc" | "title_desc" | "rating_desc" | "rating_asc";
-type SortCriteria = "title" | "vote_average" | null;
-type SortDirection = "asc" | "desc";
+import styles from "./FavoritePage.module.scss";
 
 const EmptyState: React.FC = () => (
   <div className={styles.emptyState}>
@@ -30,7 +27,7 @@ const EmptyState: React.FC = () => (
   </div>
 );
 
-const FavoritesPage: React.FC = () => {
+const FavoritePage: React.FC = () => {
   const { favorites } = useFavorites();
   const [sortOption, setSortOption] = useState<SortOption>("title_asc");
 
@@ -100,4 +97,4 @@ const FavoritesPage: React.FC = () => {
   );
 };
 
-export default FavoritesPage;
+export default FavoritePage;

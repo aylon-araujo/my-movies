@@ -1,5 +1,5 @@
 import styles from "./SortSelect.module.scss";
-import type { SortOption } from './types'
+import type { SortOption } from './SortSelect.types';
 
 export const SortSelect: React.FC<{
   currentOption: SortOption;

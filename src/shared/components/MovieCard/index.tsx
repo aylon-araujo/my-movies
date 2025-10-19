@@ -2,19 +2,14 @@ import React from 'react';
 import { FaHeart } from 'react-icons/fa'; 
 
 import { MainRoutes } from '@app/routes/Main/routes';
-import type { Movie } from '@domain/Movie';
 import { useFavorites } from '@features/favorites/hooks/useFavorites';
 import { useSearchSync } from '@features/movies/hooks/useSearchSync';
 
 import { Button } from '../Button';
 import styles from './MovieCard.module.scss';
+import type { MovieCardProps } from './MovieCard.types';
 
 const TMDB_IMAGE_BASE_URL = 'https://image.tmdb.org/t/p/w200'; 
-
-interface MovieCardProps {
-  movie: Movie;
-  highlightTerm?: string;
-}
 
 export const MovieCard: React.FC<MovieCardProps> = ({ movie, highlightTerm }) => {
   const { isFavorite, toggleFavorite } = useFavorites();

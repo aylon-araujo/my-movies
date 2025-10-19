@@ -1,7 +1,7 @@
 import React from 'react';
 
 import styles from './Button.module.scss'; 
-import type { ButtonProps } from './types';
+import type { ButtonProps } from './Button.types';
 
 export const Button: React.FC<ButtonProps> = ({
   children,

@@ -1,22 +1,9 @@
 import React, { useEffect, useRef } from 'react';
 
-import type { Movie } from '@domain/Movie';
-
 import { If } from '../If';
 import { MovieCard } from '../MovieCard';
 import styles from './MovieGrid.module.scss';
-
-interface MovieGridProps {
-  movies: Movie[];
-  isLoading: boolean;
-  error: string | null;
-  currentPage: number;
-  totalPages: number;
-  onPageChange?: (page: number) => void;
-  title?: string;
-  emptyMessage: string;
-  highlightTerm?: string;
-}
+import type { MovieGridProps } from './types';
 
 export const MovieGrid: React.FC<MovieGridProps> = ({
   movies,
