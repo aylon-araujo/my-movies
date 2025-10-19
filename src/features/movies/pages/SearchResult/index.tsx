@@ -1,7 +1,6 @@
 import React from 'react';
 
-import FloatingButton from "@shared/components/FloatingButton";
-import MovieGrid from '@shared/components/MovieGrid';
+import { FloatingButton, MovieGrid } from "@shared/components";
 
 import { useMovieList } from '../../hooks/useMovieList';
 import styles from './SearchPage.module.scss'

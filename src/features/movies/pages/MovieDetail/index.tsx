@@ -1,10 +1,9 @@
-import React, { useCallback,useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { FaHeart } from "react-icons/fa";
 import { useParams } from "react-router-dom";
 
-import type { Genre, Movie } from '@domain/Movie';
-import Button from "@shared/components/Button";
-import If from "@shared/components/If";
+import type { Genre, Movie } from "@domain/Movie";
+import { Button, If } from "@shared/components/";
 
 import { useFavorites } from "../../../favorites/hooks/useFavorites";
 import { movieApi } from "../../services/MovieApi";
@@ -115,7 +114,7 @@ const MovieDetail: React.FC = () => {
           </div>
 
           <p className={styles.metadata}>
-            <span className={styles.dataValue}>Data de lançamento:{" "}</span>
+            <span className={styles.dataValue}>Data de lançamento: </span>
             {releaseDate}
           </p>
           <p className={styles.metadata}>

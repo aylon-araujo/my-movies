@@ -3,7 +3,7 @@ import { FaHeart } from 'react-icons/fa';
 import { fireEvent } from '@testing-library/dom';
 import { render, screen } from '@testing-library/react';
 
-import Button from '../Button';
+import { Button } from '../Button';
 
 jest.mock('../Button.module.scss', () => ({
   button: 'button-base',

@@ -1,7 +1,7 @@
 import styles from "./SortSelect.module.scss";
 import type { SortOption } from './types'
 
-const SortSelect: React.FC<{
+export const SortSelect: React.FC<{
   currentOption: SortOption;
   onSortChange: (option: SortOption) => void;
 }> = ({ currentOption, onSortChange }) => {
@@ -32,5 +32,3 @@ const SortSelect: React.FC<{
     </div>
   );
 };
-
-export default SortSelect;

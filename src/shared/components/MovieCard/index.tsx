@@ -6,7 +6,7 @@ import type { Movie } from '@domain/Movie';
 import { useFavorites } from '@features/favorites/hooks/useFavorites';
 import { useSearchSync } from '@features/movies/hooks/useSearchSync';
 
-import Button from '../Button';
+import { Button } from '../Button';
 import styles from './MovieCard.module.scss';
 
 const TMDB_IMAGE_BASE_URL = 'https://image.tmdb.org/t/p/w200'; 
@@ -16,7 +16,7 @@ interface MovieCardProps {
   highlightTerm?: string;
 }
 
-const MovieCard: React.FC<MovieCardProps> = ({ movie, highlightTerm }) => {
+export const MovieCard: React.FC<MovieCardProps> = ({ movie, highlightTerm }) => {
   const { isFavorite, toggleFavorite } = useFavorites();
   const { handleNavigationClick } = useSearchSync();
   const favorite = isFavorite(movie.id); 
@@ -77,5 +77,3 @@ const MovieCard: React.FC<MovieCardProps> = ({ movie, highlightTerm }) => {
     </div>
   );
 };
-
-export default MovieCard;

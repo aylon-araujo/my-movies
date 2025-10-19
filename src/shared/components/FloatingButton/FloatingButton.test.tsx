@@ -1,6 +1,6 @@
 import { fireEvent,render, screen } from "@testing-library/react";
 
-import FloatingButton from "./index";
+import { FloatingButton } from "./";
 
 jest.mock("react-icons/fa", () => ({
   FaArrowUp: () => <div data-testid="fa-arrow-up" />,

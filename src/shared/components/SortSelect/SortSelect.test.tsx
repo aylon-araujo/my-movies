@@ -1,7 +1,7 @@
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 
-import SortSelect from "./index";
+import { SortSelect } from "./";
 import type { SortOption } from "./types";
 
 describe("SortSelect Component", () => {

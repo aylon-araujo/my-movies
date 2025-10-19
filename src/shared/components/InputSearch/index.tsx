@@ -7,7 +7,7 @@ interface InputSearchProps {
   value: string
 }
 
-const InputSearch: React.FC<InputSearchProps> = ({ onInputChange, value }) => {
+export const InputSearch: React.FC<InputSearchProps> = ({ onInputChange, value }) => {
   return (
     <div className={styles.inputSearchWrapper}>
       <input
@@ -21,5 +21,3 @@ const InputSearch: React.FC<InputSearchProps> = ({ onInputChange, value }) => {
     </div>
   );
 };
-
-export default InputSearch;

@@ -3,7 +3,7 @@ import { FaArrowUp } from "react-icons/fa";
 
 import styles from "./FloatingButton.module.scss";
 
-const FloatingButton: React.FC = () => {
+export const FloatingButton: React.FC = () => {
   const [isVisible, setIsVisible] = useState(false);
 
   const scrollToTop = () => {
@@ -34,5 +34,3 @@ const FloatingButton: React.FC = () => {
     </button>
   );
 };
-
-export default FloatingButton;

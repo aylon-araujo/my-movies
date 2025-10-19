@@ -4,11 +4,7 @@ import { Link } from "react-router-dom";
 
 import { MainRoutes } from "@app/routes/Main/routes";
 import type { Movie } from "@domain/Movie";
-import Button from "@shared/components/Button";
-import Divider from "@shared/components/Divider";
-import If from "@shared/components/If";
-import MovieGrid from "@shared/components/MovieGrid";
-import SortSelect from "@shared/components/SortSelect";
+import { Button, Divider, If, MovieGrid, SortSelect } from "@shared/components";
 
 import { useFavorites } from "../../hooks/useFavorites";
 import styles from "./FavoritesPage.module.scss";

@@ -5,9 +5,8 @@ interface IfProps {
   children: React.ReactNode;
 }
 
-const If: React.FC<IfProps> = ({ condition, children }) => {
+export const If: React.FC<IfProps> = ({ condition, children }) => {
   if (!condition) return null;
   return <>{children}</>;
 };
 
-export default If;

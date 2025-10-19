@@ -2,8 +2,8 @@ import React, { useEffect, useRef } from 'react';
 
 import type { Movie } from '@domain/Movie';
 
-import If from '../If';
-import MovieCard from '../MovieCard';
+import { If } from '../If';
+import { MovieCard } from '../MovieCard';
 import styles from './MovieGrid.module.scss';
 
 interface MovieGridProps {
@@ -18,7 +18,7 @@ interface MovieGridProps {
   highlightTerm?: string;
 }
 
-const MovieGrid: React.FC<MovieGridProps> = ({
+export const MovieGrid: React.FC<MovieGridProps> = ({
   movies,
   isLoading,
   error,
@@ -104,5 +104,3 @@ const MovieGrid: React.FC<MovieGridProps> = ({
     </div>
   );
 };
-
-export default MovieGrid;

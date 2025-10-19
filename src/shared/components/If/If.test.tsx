@@ -1,6 +1,6 @@
 import { render, screen } from '@testing-library/react';
 
-import If from './index'
+import { If } from './'
 
 describe('If Component', () => {
   it('should render children when condition is true', () => {

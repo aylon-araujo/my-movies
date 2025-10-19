@@ -4,11 +4,11 @@ import { useLocation } from "react-router-dom";
 import { MainRoutes } from "@app/routes/Main/routes";
 import { useSearchSync } from "@features/movies/hooks/useSearchSync";
 
-import Button from "../Button";
-import InputSearch from "../InputSearch";
+import { Button } from "../Button";
+import { InputSearch } from "../InputSearch";
 import styles from "./Header.module.scss";
 
-const Header: React.FC = () => {
+export const Header: React.FC = () => {
   const { searchTerm, setSearchTerm, handleNavigationClick } = useSearchSync();
 
   const location = useLocation(); 
@@ -60,5 +60,3 @@ const Header: React.FC = () => {
     </header>
   );
 };
-
-export default Header;
