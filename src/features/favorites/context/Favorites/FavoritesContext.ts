@@ -1,4 +1,5 @@
 import { createContext } from 'react';
+
 import type { Movie } from '@domain/Movie';
 
 export interface FavoritesContextType {

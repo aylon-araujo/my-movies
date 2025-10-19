@@ -1,3 +1,5 @@
+// eslint.config.js
+
 import js from '@eslint/js'
 import { defineConfig, globalIgnores } from 'eslint/config'
 import reactHooks from 'eslint-plugin-react-hooks'
@@ -5,6 +7,7 @@ import reactRefresh from 'eslint-plugin-react-refresh'
 import simpleImportSort from "eslint-plugin-simple-import-sort";
 import globals from 'globals'
 import tseslint from 'typescript-eslint'
+import prettierConfig from 'eslint-config-prettier';
 
 export default defineConfig([
   globalIgnores(['dist']),
@@ -29,8 +32,10 @@ export default defineConfig([
         'error',
         {
           groups: [
-            ['^\\u0000', '^node:', '^@?\\w'],
-            ['^@domain', '^@shared', '^@features', '^@app'],
+            ['^react', '^react-dom', '^next'],
+            ['^\\u0000'],
+            ['^node:', '^@?\\w'],
+            ['^@'],
             ['^\\.'],
           ],
         },
@@ -38,4 +43,5 @@ export default defineConfig([
       'simple-import-sort/exports': 'error',
     },
   },
+  prettierConfig,
 ])

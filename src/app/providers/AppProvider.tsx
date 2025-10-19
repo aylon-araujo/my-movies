@@ -1,4 +1,5 @@
 import React from 'react';
+
 import { FavoritesProvider } from '@features/favorites/context/Favorites/FavoritesProvider';
 
 interface AppProviderProps {

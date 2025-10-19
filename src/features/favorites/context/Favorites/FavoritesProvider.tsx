@@ -1,6 +1,8 @@
-import React, { useState, useEffect, useCallback, useMemo } from 'react';
-import { FavoritesContext } from './FavoritesContext';
+import React, { useCallback, useEffect, useMemo,useState } from 'react';
+
 import type { Movie } from '@domain/Movie';
+
+import { FavoritesContext } from './FavoritesContext';
 
 const STORAGE_KEY = '@MovieDB:Favorites';
 

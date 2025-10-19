@@ -1,15 +1,17 @@
-import React, { useState, useMemo } from "react";
-import MovieGrid from "@shared/components/MovieGrid";
-import Button from "@shared/components/Button";
-import SortSelect from "@shared/components/SortSelect";
-import If from "@shared/components/If";
-import styles from "./FavoritesPage.module.scss";
+import React, { useMemo,useState } from "react";
+import { BiSolidMoviePlay } from "react-icons/bi";
 import { Link } from "react-router-dom";
+
 import { MainRoutes } from "@app/routes/Main/routes";
 import type { Movie } from "@domain/Movie";
-import { useFavorites } from "../../hooks/useFavorites";
+import Button from "@shared/components/Button";
 import Divider from "@shared/components/Divider";
-import { BiSolidMoviePlay } from "react-icons/bi";
+import If from "@shared/components/If";
+import MovieGrid from "@shared/components/MovieGrid";
+import SortSelect from "@shared/components/SortSelect";
+
+import { useFavorites } from "../../hooks/useFavorites";
+import styles from "./FavoritesPage.module.scss";
 
 type SortOption = "title_asc" | "title_desc" | "rating_desc" | "rating_asc";
 type SortCriteria = "title" | "vote_average" | null;

@@ -1,7 +1,8 @@
 import { useContext } from 'react';
+
 import { 
-    FavoritesContext, 
     defaultContextValue, 
+    FavoritesContext, 
     type FavoritesContextType
 } from '@features/favorites/context/Favorites/FavoritesContext'; 
 

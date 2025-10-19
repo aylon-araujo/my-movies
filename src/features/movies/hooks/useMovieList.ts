@@ -1,7 +1,9 @@
-import { useState, useEffect, useCallback } from 'react';
+import { useCallback,useEffect, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
-import { movieApi } from '../services/MovieApi';
+
 import type { Movie } from '@domain/Movie';
+
+import { movieApi } from '../services/MovieApi';
 
 interface UseMovieListReturn {
   movies: Movie[];

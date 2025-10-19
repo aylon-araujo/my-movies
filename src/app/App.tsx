@@ -1,9 +1,11 @@
 import { BrowserRouter } from 'react-router-dom';
-import { AppRouter } from '@app/routes';
-import { AppProvider } from '@app/providers/AppProvider';
-import Header from '@shared/components/Header';
-import Divider from '@shared/components/Divider';
+
 import './styles/App.css';
+
+import { AppProvider } from '@app/providers/AppProvider';
+import { AppRouter } from '@app/routes';
+import Divider from '@shared/components/Divider';
+import Header from '@shared/components/Header';
 
 
 function App() {

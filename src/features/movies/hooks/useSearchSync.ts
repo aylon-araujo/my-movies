@@ -1,7 +1,8 @@
-import { useState, useEffect, useCallback } from 'react';
-import { useNavigate, useSearchParams, useLocation } from 'react-router-dom';
-import { useDebounce } from '@shared/hooks/useDebounce';
+import { useCallback,useEffect, useState } from 'react';
+import { useLocation,useNavigate, useSearchParams } from 'react-router-dom';
+
 import { MainRoutes } from '@app/routes/Main/routes';
+import { useDebounce } from '@shared/hooks/useDebounce';
 
 const DEBOUNCE_DELAY = 500;
 

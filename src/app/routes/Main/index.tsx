@@ -1,9 +1,11 @@
 import { Route, Routes } from 'react-router-dom';
-import { MainRoutes as RT } from './routes';
-import SearchResult from '@features/movies/pages/SearchResult';
-import MovieDetail from '@features/movies/pages/MovieDetail';
-import HomePage from '@features/movies/pages/Home';
+
 import FavoritesPage from '@features/favorites/pages/Favorites'
+import HomePage from '@features/movies/pages/Home';
+import MovieDetail from '@features/movies/pages/MovieDetail';
+import SearchResult from '@features/movies/pages/SearchResult';
+
+import { MainRoutes as RT } from './routes';
 
 export function MainRoutes() {
   return (

@@ -1,10 +1,12 @@
 import React from "react";
-import { useSearchSync } from "@features/movies/hooks/useSearchSync";
 import { useLocation } from "react-router-dom";
-import InputSearch from "../InputSearch";
-import Button from "../Button";
-import styles from "./Header.module.scss";
+
 import { MainRoutes } from "@app/routes/Main/routes";
+import { useSearchSync } from "@features/movies/hooks/useSearchSync";
+
+import Button from "../Button";
+import InputSearch from "../InputSearch";
+import styles from "./Header.module.scss";
 
 const Header: React.FC = () => {
   const { searchTerm, setSearchTerm, handleNavigationClick } = useSearchSync();

@@ -1,7 +1,8 @@
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import type { SortOption } from "./types";
+
 import SortSelect from "./index";
+import type { SortOption } from "./types";
 
 describe("SortSelect Component", () => {
   const mockOnSortChange = jest.fn();

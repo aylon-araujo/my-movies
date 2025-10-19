@@ -1,7 +1,9 @@
 import React from 'react';
-import { useMovieList } from '../../hooks/useMovieList';
+
 import FloatingButton from "@shared/components/FloatingButton";
 import MovieGrid from '@shared/components/MovieGrid';
+
+import { useMovieList } from '../../hooks/useMovieList';
 import styles from './SearchPage.module.scss'
 
 const SearchResult: React.FC = () => {

@@ -1,6 +1,8 @@
 import React from 'react';
-import MovieGrid from '@shared/components/MovieGrid';
+
 import FloatingButton from "@shared/components/FloatingButton";
+import MovieGrid from '@shared/components/MovieGrid';
+
 import { useMovieList } from '../../hooks/useMovieList';
 import styles from './Home.module.scss'
 

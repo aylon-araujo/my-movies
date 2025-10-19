@@ -1,11 +1,13 @@
 import React from 'react';
+import { FaHeart } from 'react-icons/fa'; 
+
+import { MainRoutes } from '@app/routes/Main/routes';
 import type { Movie } from '@domain/Movie';
 import { useFavorites } from '@features/favorites/hooks/useFavorites';
 import { useSearchSync } from '@features/movies/hooks/useSearchSync';
-import { FaHeart } from 'react-icons/fa'; 
-import styles from './MovieCard.module.scss';
+
 import Button from '../Button';
-import { MainRoutes } from '@app/routes/Main/routes';
+import styles from './MovieCard.module.scss';
 
 const TMDB_IMAGE_BASE_URL = 'https://image.tmdb.org/t/p/w200'; 
 

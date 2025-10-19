@@ -36,7 +36,7 @@ export class MovieApi extends ConnectionProvider {
   ): Promise<MovieSearchResponse> {
     const isSearch = query && query.trim().length > 0;
     const endpoint = isSearch ? '/search/movie' : '/movie/popular';
-    const params: { [key: string]: any } = { 
+    const params: { [key: string]: unknown } = { 
       page: pageNum 
     };
 

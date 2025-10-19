@@ -1,4 +1,5 @@
 import React from 'react';
+
 import styles from './Divider.module.scss';
 import type { DividerProps } from './types';
 

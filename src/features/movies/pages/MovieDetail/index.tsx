@@ -1,12 +1,14 @@
-import React, { useState, useEffect, useCallback } from "react";
-import { useParams } from "react-router-dom";
-import { movieApi } from "../../services/MovieApi";
-import { useFavorites } from "../../../favorites/hooks/useFavorites";
-import type { Movie } from '@domain/Movie';
-import Button from "@shared/components/Button";
+import React, { useCallback,useEffect, useState } from "react";
 import { FaHeart } from "react-icons/fa";
-import styles from "./MovieDetail.module.scss";
+import { useParams } from "react-router-dom";
+
+import type { Genre, Movie } from '@domain/Movie';
+import Button from "@shared/components/Button";
 import If from "@shared/components/If";
+
+import { useFavorites } from "../../../favorites/hooks/useFavorites";
+import { movieApi } from "../../services/MovieApi";
+import styles from "./MovieDetail.module.scss";
 
 const TMDB_IMAGE_BASE_URL_LARGE = "https://image.tmdb.org/t/p/w1280";
 
@@ -27,7 +29,7 @@ const MovieDetail: React.FC = () => {
     try {
       const data = await movieApi.getMovieDetail(mid);
       setMovie(data);
-    } catch (err) {
+    } catch {
       setError("Não foi possível carregar os detalhes do filme.");
     } finally {
       setLoading(false);
@@ -83,7 +85,7 @@ const MovieDetail: React.FC = () => {
   const backdropUrl = movie.backdrop_path
     ? `${TMDB_IMAGE_BASE_URL_LARGE}${movie.backdrop_path}`
     : undefined;
-  const genres = (movie as any).genres?.map((g: any) => g.name) || [];
+  const genres = (movie as Movie).genres?.map((g: Genre) => g.name) || [];
 
   return (
     <div className={styles.detailPage}>

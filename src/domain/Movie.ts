@@ -1,7 +1,7 @@
 export type Movie = {
   adult: boolean;
   backdrop_path: string | null;
-  genre_ids: number[];
+  genres: Genre[];
   id: number;
   original_language: string;
   original_title: string;
@@ -14,6 +14,11 @@ export type Movie = {
   vote_average: number;
   vote_count: number;
 };
+
+export type Genre = {
+  id: string;
+  name: string;
+}
 
 export type MovieSearchResponse = {
   page: number;

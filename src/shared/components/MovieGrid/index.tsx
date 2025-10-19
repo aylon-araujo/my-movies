@@ -1,8 +1,10 @@
 import React, { useEffect, useRef } from 'react';
+
 import type { Movie } from '@domain/Movie';
+
+import If from '../If';
 import MovieCard from '../MovieCard';
 import styles from './MovieGrid.module.scss';
-import If from '../If';
 
 interface MovieGridProps {
   movies: Movie[];
@@ -30,7 +32,8 @@ const MovieGrid: React.FC<MovieGridProps> = ({
   const sentinelRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
-    if (!sentinelRef.current) return;
+    const currentSentinel = sentinelRef.current;
+    if (!currentSentinel) return;
 
     const observer = new IntersectionObserver(
       (entries) => {
@@ -46,11 +49,11 @@ const MovieGrid: React.FC<MovieGridProps> = ({
       }
     );
 
-    observer.observe(sentinelRef.current);
+    observer.observe(currentSentinel);
 
     return () => {
-      if (sentinelRef.current) {
-        observer.unobserve(sentinelRef.current);
+      if (currentSentinel) {
+        observer.unobserve(currentSentinel);
       }
     };
   }, [isLoading, currentPage, totalPages, onPageChange]);

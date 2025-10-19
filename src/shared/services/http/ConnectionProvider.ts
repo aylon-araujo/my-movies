@@ -1,22 +1,22 @@
 import axios, {
+  type AxiosError,
   type AxiosInstance,
   type AxiosResponse,
   type InternalAxiosRequestConfig,
-  type AxiosError,
 } from 'axios';
 
 type RequestInterceptor = {
   onFulfilled?: (
     config: InternalAxiosRequestConfig
   ) => InternalAxiosRequestConfig | Promise<InternalAxiosRequestConfig>;
-  onRejected?: (error: AxiosError) => any;
+  onRejected?: (error: AxiosError) => Promise<unknown>;
 };
 
 type ResponseInterceptor = {
   onFulfilled?: (
     response: AxiosResponse
   ) => AxiosResponse | Promise<AxiosResponse>;
-  onRejected?: (error: AxiosError) => any;
+  onRejected?: (error: AxiosError) => Promise<unknown>;
 };
 
 type ConnectionProviderProps = {
