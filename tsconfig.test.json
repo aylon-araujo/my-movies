@@ -1,0 +1,41 @@
+{
+  "extends": "./tsconfig.json", // Estende sua base
+  "compilerOptions": {
+    "composite": true,
+    "target": "ES2020",
+    "jsx": "react-jsx",
+    
+    // 🎯 Ajustes para o JEST
+    "module": "CommonJS", // Jest usa CommonJS ou ESModule com Node Resolution
+    "moduleResolution": "node", // Jest/ts-jest usa ModuleResolution 'node'
+    
+    // Tipos de teste e ambiente JSDOM
+    "types": ["jest", "node", "@testing-library/jest-dom"], 
+    
+    // Invalida 'noEmit' do tsconfig.app.json (se herdar)
+    "noEmit": false,
+    "esModuleInterop": true,   // Ajuda na compatibilidade de módulos
+    
+    // Novas Configurações Recomendadas:
+    "strict": true,            // Boas práticas (se não estiver já em tsconfig.app.json)
+    "skipLibCheck": true,      // Ignora arquivos node_modules (acelera o build)
+    "resolveJsonModule": true, // Permite importar arquivos JSON
+    
+    // Permite que arquivos .d.ts sejam incluídos em qualquer lugar
+    "allowSyntheticDefaultImports": true
+  },
+  // INCLUSÕES: Onde o TypeScript deve procurar arquivos
+  "include": [
+    "src/**/*",
+    // 🎯 Esta linha já está correta, garantindo que "src/types/scss.d.ts" seja lido.
+    "src/types/**/*.d.ts",
+    // Adicionar o arquivo de configuração do Jest para tipagem
+    "jest.config.ts" 
+  ],
+  
+  // Exclusões: Opcional, mas útil
+  "exclude": [
+    "node_modules",
+    "dist"
+  ]
+}
