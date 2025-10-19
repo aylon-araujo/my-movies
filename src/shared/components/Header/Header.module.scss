@@ -17,10 +17,15 @@
     font-size: vars.$font-size-lg;
     color: vars.$yellow-dark;
     font-weight: vars.$font-weight-bold;
+    margin-right: 1rem;
 
     &::before {
       content: '🎬';
       margin-right: 0.5rem;
+    }
+
+    @media (max-width: vars.$breakpoint-md) {
+      margin: 0;
     }
   }
 
@@ -30,5 +35,11 @@
     align-items: center;
     justify-content: center;
     gap: vars.$spacing-sm;
+
+    @media (max-width: vars.$breakpoint-md) {
+      padding: 0;
+      width: 100%;
+      justify-content: space-evenly;
+    }
   }
 }

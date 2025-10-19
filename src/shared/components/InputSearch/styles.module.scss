@@ -10,6 +10,10 @@
   align-items: center;
   transition: box-shadow 0.2s ease-in-out;
 
+  @media (max-width: vars.$breakpoint-md) {
+    padding: 1rem;
+  }
+
   .inputSearch {
     background-color: transparent;
     border: none;
