@@ -9,6 +9,7 @@ import { Link } from "react-router-dom";
 import { MainRoutes } from "@app/routes/Main/routes";
 import type { Movie } from "@domain/Movie";
 import { useFavorites } from '../../hooks/useFavorites';
+import Divider from "@shared/components/Divider";
 
 
 type SortOption = "title_asc" | "title_desc" | "rating_desc" | "rating_asc";
@@ -77,7 +78,7 @@ const FavoritesPage: React.FC = () => {
   return (
     <div className={styles.favoritesPageContainer}>
       <h1 className={styles.title}>
-        Meus Filmes Favoritos ({favorites.length})
+        Meus Filmes Favoritos
       </h1>
       <If condition={HAS_FAVORITE}>
         <div className={styles.sortControlContainer}>
@@ -89,6 +90,7 @@ const FavoritesPage: React.FC = () => {
           />
         </div>
       </If>
+      <Divider size='large' />
       <If condition={!HAS_FAVORITE}>
         <EmptyState />
       </If>
