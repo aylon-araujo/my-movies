@@ -1,0 +1,29 @@
+@use '../../../../app/styles/variables' as vars;
+
+.emptyState {
+  margin: auto;
+}
+
+.icon {
+  font-size: vars.$font-size-xxl;
+}
+
+.emptyMessageHead {
+  font-size: vars.$font-size-xl;
+  font-weight: vars.$font-weight-regular;
+
+}
+
+.emptyMessageBody {
+  font-size: vars.$font-size-lg;
+  font-weight: vars.$font-weight-regular;
+}
+
+.favoritesPageContainer {
+  padding: vars.$spacing-lg;
+  color: vars.$text-primary;
+}
+
+.title {
+  text-align: start;
+}

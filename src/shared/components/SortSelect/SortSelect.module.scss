@@ -1,0 +1,24 @@
+@use '../../../app/styles/variables' as vars;
+
+.sortControlContainer {
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  gap: 1rem;
+  padding: 1rem 0;
+}
+
+.filterLabel {
+  font-weight: vars.$font-weight-regular;
+}
+
+.sortSelect {
+  max-width: 14rem;
+  width: 100%;
+  background-color: #334156;
+  padding: 1rem;
+  border-radius: .5rem;
+  display: flex;
+  align-items: center;
+  color: white;
+}
