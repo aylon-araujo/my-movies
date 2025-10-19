@@ -4,7 +4,6 @@
   cursor: pointer;
   border: none; 
   border-radius: vars.$spacing-sm;
-  font-weight: vars.$font-weight-semibold;
   transition: all 0.2s ease-in-out;
   color: vars.$text-primary;
 
@@ -22,7 +21,6 @@
 .medium {
   padding: vars.$spacing-sm vars.$spacing-md;
   font-size: vars.$font-size-md;
-  min-width: 120px; 
 }
 
 .large {
@@ -33,21 +31,12 @@
 .primary {
   background-color: vars.$action-accent;
   color: vars.$text-primary;
-
-  // &:hover:not(:disabled) {
-  //   background-color: color.adjust(vars.$action-accent, $lightness: -8%);
-  // }
 }
 
 .danger {
   background-color: vars.$action-primary;
   color: vars.$text-primary;
-  
   border-radius: vars.$spacing-sm;
-
-  // &:hover:not(:disabled) {
-  //   background-color: color.adjust(vars.$action-accent, $lightness: 8%);
-  // }
 }
 
 .secondary {
