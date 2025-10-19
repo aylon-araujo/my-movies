@@ -9,7 +9,7 @@
 .contentContainer {
   display: flex;
   gap: vars.$spacing-xl;
-  padding: vars.$spacing-lg 0;
+  padding: vars.$spacing-lg;
   width: 100%;
   margin: 0 auto;
 
@@ -96,7 +96,7 @@
 }
 
 .dataValue {
-  color: vars.$text-primary;
+  color: vars.$text-secondary;
   font-weight: vars.$font-weight-bold;
 }
 
@@ -106,15 +106,15 @@
   color: vars.$black;
   font-weight: vars.$font-weight-bold;
   padding: 3px 8px;
-  border-radius: 4px;
+  border-radius: 50%;
   margin-left: vars.$spacing-sm;
   font-size: vars.$font-size-sm;
 }
 
 .sectionTitle {
-  font-size: vars.$font-size-xl;
+  font-size: vars.$font-size-md;
   margin-top: vars.$spacing-lg;
-  margin-bottom: vars.$spacing-md;
+  margin-bottom: vars.$spacing-sm;
   color: vars.$text-primary;
 }
 

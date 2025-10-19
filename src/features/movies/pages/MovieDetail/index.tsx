@@ -113,8 +113,8 @@ const MovieDetail: React.FC = () => {
           </div>
 
           <p className={styles.metadata}>
-            Data de lançamento:{" "}
-            <span className={styles.dataValue}>{releaseDate}</span>
+            <span className={styles.dataValue}>Data de lançamento:{" "}</span>
+            {releaseDate}
           </p>
           <p className={styles.metadata}>
             Nota TMDB:
