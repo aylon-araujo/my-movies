@@ -1,0 +1,22 @@
+@use '../../../app/styles/variables' as vars;
+
+.divider {
+  width: 100%;
+  border: solid 1px vars.$input-bg;
+  margin: vars.$spacing-sm 0;
+}
+
+.divider--small {
+  height: 1px;
+  margin: vars.$spacing-xs 0;
+}
+
+.divider--medium {
+  height: 2px;
+  margin: vars.$spacing-sm 0;
+}
+
+.divider--large {
+  height: 4px;
+  margin: vars.$spacing-lg 0;
+}
