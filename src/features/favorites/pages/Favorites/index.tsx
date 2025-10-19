@@ -3,14 +3,13 @@ import MovieGrid from "@shared/components/MovieGrid";
 import Button from "@shared/components/Button";
 import SortSelect from "@shared/components/SortSelect";
 import If from "@shared/components/If";
-import { FaArrowRight } from "react-icons/fa";
 import styles from "./FavoritesPage.module.scss";
 import { Link } from "react-router-dom";
 import { MainRoutes } from "@app/routes/Main/routes";
 import type { Movie } from "@domain/Movie";
-import { useFavorites } from '../../hooks/useFavorites';
+import { useFavorites } from "../../hooks/useFavorites";
 import Divider from "@shared/components/Divider";
-
+import { BiSolidMoviePlay } from "react-icons/bi";
 
 type SortOption = "title_asc" | "title_desc" | "rating_desc" | "rating_asc";
 type SortCriteria = "title" | "vote_average" | null;
@@ -18,17 +17,16 @@ type SortDirection = "asc" | "desc";
 
 const EmptyState: React.FC = () => (
   <div className={styles.emptyState}>
-    <img
-      src="https://via.placeholder.com/300x200?text=Lista+Vazia"
-      alt="Lista de favoritos vazia"
-      className={styles.emptyImage}
-    />
-    <p className={styles.emptyMessage}>
-      Parece que você ainda não adicionou nenhum filme aos seus favoritos.
+    <BiSolidMoviePlay className={styles.icon} />
+    <p className={styles.emptyMessageHead}>
+      Nenhum filme favorito ainda
+    </p>
+    <p className={styles.emptyMessageBody}>
+      Comece explorando filmes populares e adicione seus favoritos!
     </p>
     <Link to={MainRoutes.HOME} className={styles.ctaLink}>
       <Button variant="primary" size="large">
-        Explorar Filmes <FaArrowRight />
+        Explorar Filmes
       </Button>
     </Link>
   </div>
@@ -77,10 +75,8 @@ const FavoritesPage: React.FC = () => {
 
   return (
     <div className={styles.favoritesPageContainer}>
-      <h1 className={styles.title}>
-        Meus Filmes Favoritos
-      </h1>
       <If condition={HAS_FAVORITE}>
+        <h1 className={styles.title}>Meus Filmes Favoritos</h1>
         <div className={styles.sortControlContainer}>
           <SortSelect
             currentOption={sortOption as SortOption}
@@ -89,12 +85,7 @@ const FavoritesPage: React.FC = () => {
             }
           />
         </div>
-      </If>
-      <Divider size='large' />
-      <If condition={!HAS_FAVORITE}>
-        <EmptyState />
-      </If>
-      <If condition={HAS_FAVORITE}>
+        <Divider size="large" />
         <MovieGrid
           movies={sortedFavorites}
           isLoading={false}
@@ -103,6 +94,9 @@ const FavoritesPage: React.FC = () => {
           totalPages={1}
           emptyMessage="Nenhum filme favorito."
         />
+      </If>
+      <If condition={!HAS_FAVORITE}>
+        <EmptyState />
       </If>
     </div>
   );
