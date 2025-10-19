@@ -1,6 +1,5 @@
 import styles from "./SortSelect.module.scss";
-
-type SortOption = "title_asc" | "title_desc" | "rating_desc" | "rating_asc";
+import type { SortOption } from './types'
 
 const SortSelect: React.FC<{
   currentOption: SortOption;
