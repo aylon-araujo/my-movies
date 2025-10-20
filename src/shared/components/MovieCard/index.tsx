@@ -1,42 +1,56 @@
-import React from 'react';
-import { FaHeart } from 'react-icons/fa'; 
+import React, { useCallback } from "react"; // Importar useCallback
+import { FaHeart, FaTrash } from "react-icons/fa";
+import { useLocation } from "react-router-dom";
 
-import { MainRoutes } from '@app/routes/Main/routes';
-import { useFavorites } from '@features/favorites/hooks/useFavorites';
-import { useSearchSync } from '@features/movies/hooks/useSearchSync';
+import { MainRoutes } from "@app/routes/Main/routes";
+import { useFavorites } from "@features/favorites/hooks/useFavorites";
+import { useSearchSync } from "@features/movies/hooks/useSearchSync";
 
-import { Button } from '../Button';
-import styles from './MovieCard.module.scss';
-import type { MovieCardProps } from './MovieCard.types';
+import { Button } from "../Button";
+import styles from "./MovieCard.module.scss";
+import type { MovieCardProps } from "./MovieCard.types";
 
-const TMDB_IMAGE_BASE_URL = 'https://image.tmdb.org/t/p/w200'; 
+const TMDB_IMAGE_BASE_URL = "https://image.tmdb.org/t/p/w200";
 
-export const MovieCard: React.FC<MovieCardProps> = ({ movie, highlightTerm }) => {
+export const MovieCard: React.FC<MovieCardProps> = ({
+  movie,
+  highlightTerm,
+}) => {
   const { isFavorite, toggleFavorite } = useFavorites();
   const { handleNavigationClick } = useSearchSync();
-  const favorite = isFavorite(movie.id); 
+  const location = useLocation();
 
-  const imageUrl = movie.poster_path 
-    ? `${TMDB_IMAGE_BASE_URL}${movie.poster_path}` 
-    : 'https://via.placeholder.com/200x300?text=Sem+Poster';
+  const isFavoritesPage = location.pathname === MainRoutes.FAVORITES_MOVIES;
+  const favorite = isFavorite(movie.id);
 
-  const handleCardClick = () => {
-    handleNavigationClick(`${MainRoutes.MOVIE_DETAIL.replace(':id', String(movie.id))}`);
-  };
-  
-  const handleFavoriteClick = (e: React.MouseEvent) => {
-    e.stopPropagation(); 
-    toggleFavorite(movie);
-  };
+  const imageUrl = movie.poster_path
+    ? `${TMDB_IMAGE_BASE_URL}${movie.poster_path}`
+    : "https://via.placeholder.com/200x300?text=Sem+Poster";
+
+  const handleCardClick = useCallback(() => {
+    handleNavigationClick(
+      `${MainRoutes.MOVIE_DETAIL.replace(":id", String(movie.id))}`
+    );
+  }, [handleNavigationClick, movie.id]);
+
+  const handleFavoriteClick = useCallback(
+    (e: React.MouseEvent) => {
+      e.stopPropagation();
+      toggleFavorite(movie);
+    },
+    [toggleFavorite, movie]
+  );
 
   const getHighlightedTitle = (title: string, term?: string) => {
     if (!term) return title;
-    const parts = title.split(new RegExp(`(${term})`, 'gi'));
+    const parts = title.split(new RegExp(`(${term})`, "gi"));
     return (
       <>
         {parts.map((part, index) =>
           part.toLowerCase() === term.toLowerCase() ? (
-            <span key={index} className={styles.highlight}>{part}</span>
+            <span key={index} className={styles.highlight}>
+              {part}
+            </span>
           ) : (
             part
           )
@@ -46,27 +60,47 @@ export const MovieCard: React.FC<MovieCardProps> = ({ movie, highlightTerm }) =>
   };
 
   return (
-    <div className={styles.movieCard} onClick={handleCardClick} role="button" tabIndex={0}>
+    <div
+      className={styles.movieCard}
+      onClick={handleCardClick}
+      role="button"
+      tabIndex={0}
+    >
       <div className={styles.posterContainer}>
-        <img src={imageUrl} alt={`Poster do filme ${movie.title}`} className={styles.poster} />
-        
+        <img
+          src={imageUrl}
+          alt={`Poster do filme ${movie.title}`}
+          className={styles.poster}
+        />
+
         <div className={styles.favoriteButtonOverlay}>
           <Button
-            aria-label={favorite ? 'removeFavorite' : 'addFavorite'}
-            variant={favorite ? "danger" : "ghost"} 
-            size="small" 
+            aria-label={
+              isFavoritesPage
+                ? "removeFavorite"
+                : favorite
+                  ? "removeFavorite"
+                  : "addFavorite"
+            }
+            variant={isFavoritesPage ? "ghost" : favorite ? "danger" : "ghost"}
+            size="small"
             className={styles.defaultFavoriteButton}
-            onClick={handleFavoriteClick} 
+            onClick={handleFavoriteClick}
           >
-            <FaHeart color={favorite ? 'white' : 'currentColor'} /> 
+            {isFavoritesPage ? (
+              <FaTrash color="white" />
+            ) : (
+              <FaHeart color={favorite ? "red" : "currentColor"} />
+            )}
           </Button>
         </div>
-        
       </div>
       <div className={styles.info}>
-        <h3 className={styles.title}>{getHighlightedTitle(movie.title, highlightTerm)}</h3>
+        <h3 className={styles.title}>
+          {getHighlightedTitle(movie.title, highlightTerm)}
+        </h3>
         <div className={styles.rating}>
-          {movie.vote_average ? movie.vote_average.toFixed(1) : 'N/A'}
+          {movie.vote_average ? movie.vote_average.toFixed(1) : "N/A"}
         </div>
       </div>
     </div>
