@@ -4,13 +4,16 @@
   padding: vars.$spacing-lg;
   color: vars.$text-primary;
 }
-
-.searchTitle {
-  font-size: vars.$font-size-xxl;
-  margin-bottom: vars.$spacing-md;
-  
-  .queryHighlight {
-    color: vars.$action-accent;
+.searchPageHead {
+  text-align: start;
+  padding-bottom: 3rem;
+  .searchTitle {
+    font-size: vars.$font-size-xxl;
+    margin-bottom: vars.$spacing-sm;
+    
+    .queryHighlight {
+      color: vars.$yellow-dark;
+    }
   }
 }
 
