@@ -1,11 +1,8 @@
 import React from "react";
 
 import styles from './InputSearch.module.scss';
+import type { InputSearchProps } from "./InputSearch.types";
 
-interface InputSearchProps {
-  onInputChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
-  value: string
-}
 
 export const InputSearch: React.FC<InputSearchProps> = ({ onInputChange, value }) => {
   return (
