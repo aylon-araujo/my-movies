@@ -4,6 +4,7 @@ import FavoritePage from '@features/favorites/pages/Favorites'
 import HomePage from '@features/movies/pages/Home';
 import MovieDetail from '@features/movies/pages/MovieDetail';
 import SearchResult from '@features/movies/pages/SearchResult';
+import NotFound from '@shared/components/NotFound';
 
 import { MainRoutes as RT } from './routes';
 
@@ -15,7 +16,7 @@ export function MainRoutes() {
         <Route path={RT.MOVIE_DETAIL} element={<MovieDetail />} />
         <Route path={RT.FAVORITES_MOVIES} element={<FavoritePage />} />
         <Route path={RT.SEARCH_MOVIES} element={<SearchResult />} />
-        <Route path={RT.NOT_FOUND} element={<h1>404 NOT FOUND</h1>} />
+        <Route path={RT.NOT_FOUND} element={<NotFound />} />
       </Route>
     </Routes>
   );

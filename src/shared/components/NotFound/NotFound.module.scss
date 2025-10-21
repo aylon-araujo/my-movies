@@ -1,0 +1,20 @@
+@use '../../../app/styles/variables' as vars;
+
+.notFoundContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: vars.$spacing-xl;
+  margin: 1rem;
+
+  .notFoundHead {
+    font-size: 10rem;
+    line-height: 10rem;
+    margin: 0;
+  }
+
+  .notFoundBody {
+    font-size: vars.$font-size-xxl;
+  }
+}
