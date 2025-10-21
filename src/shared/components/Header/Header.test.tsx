@@ -3,6 +3,8 @@ import { MemoryRouter, useLocation } from "react-router-dom";
 import { MainRoutes } from "@app/routes/Main/routes";
 import { fireEvent, render, screen } from "@testing-library/react";
 
+import type { ButtonProps } from "../Button/Button.types";
+import type { InputSearchProps } from "../InputSearch/InputSearch.types";
 import { Header } from "./";
 
 const mockUseSearchSync = jest.fn();
@@ -16,7 +18,7 @@ jest.mock("react-router-dom", () => ({
 }));
 
 jest.mock("../Button", () => ({
-  Button: ({ onClick, variant, children }: any) => (
+  Button: ({ onClick, variant, children }: ButtonProps) => (
     <button
       data-testid={`button-${children}`}
       onClick={onClick}
@@ -28,7 +30,7 @@ jest.mock("../Button", () => ({
 }));
 
 jest.mock("../InputSearch", () => ({
-  InputSearch: ({ value, onInputChange }: any) => (
+  InputSearch: ({ value, onInputChange }: InputSearchProps) => (
     <input
       data-testid="input-search"
       value={value}

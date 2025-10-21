@@ -2,9 +2,14 @@ import '@testing-library/jest-dom';
 
 import  { TextDecoder,TextEncoder } from 'text-encoding';
 
-if (typeof (globalThis as any).TextEncoder === 'undefined') {
-    (globalThis as any).TextEncoder = TextEncoder;
+type GlobalWithTextAPIs = typeof globalThis & {
+    TextEncoder: typeof TextEncoder;
+    TextDecoder: typeof TextDecoder;
+};
+
+if (typeof (globalThis as GlobalWithTextAPIs).TextEncoder === 'undefined') {
+    (globalThis as GlobalWithTextAPIs).TextEncoder = TextEncoder;
 }
-if (typeof (globalThis as any).TextDecoder === 'undefined') {
-    (globalThis as any).TextDecoder = TextDecoder;
+if (typeof (globalThis as GlobalWithTextAPIs).TextDecoder === 'undefined') {
+    (globalThis as GlobalWithTextAPIs).TextDecoder = TextDecoder;
 }
